@@ -1,5 +1,6 @@
 from itertools import takewhile
-from core import even, fibonacci_numbers
+from mathtools.number_theory import even
+from mathtools.combinatorics import fibonacci_numbers
 
 def solution(n: int) -> int:
     """The sum of even Fibonacci numbers less than `n`."""
