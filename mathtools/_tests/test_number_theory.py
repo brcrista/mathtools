@@ -1,6 +1,5 @@
 import unittest
-from string import ascii_lowercase
-from core import *
+from mathtools.number_theory import *
 
 class Test(unittest.TestCase):
     def test_divides(self):
@@ -54,31 +53,6 @@ class Test(unittest.TestCase):
         self.assertEqual(lcm(1, 123456), 123456)
         self.assertEqual(lcm(4, 6), 12)
         self.assertEqual(lcm(6, 4), 12)
-
-    def test_binomial_coefficient(self):
-        self.assertEqual(binomial_coefficient(1, 0), 1)
-        self.assertEqual(binomial_coefficient(1, 1), 1)
-        self.assertEqual(binomial_coefficient(10, 10), 1)
-        self.assertEqual(binomial_coefficient(10, 1), 10)
-        self.assertEqual(binomial_coefficient(4, 2), 6)
-
-        self.assertEqual(binomial_coefficient(6, 0), 1)
-        self.assertEqual(binomial_coefficient(6, 1), 6)
-        self.assertEqual(binomial_coefficient(6, 2), 15)
-        self.assertEqual(binomial_coefficient(6, 3), 20)
-        self.assertEqual(binomial_coefficient(6, 4), 15)
-        self.assertEqual(binomial_coefficient(6, 5), 6)
-        self.assertEqual(binomial_coefficient(6, 6), 1)
-
-    def test_is_iterable(self):
-        self.assertFalse(is_iterable(1))
-        self.assertTrue(is_iterable([]))
-
-    def test_argmax(self):
-        self.assertEqual(argmax(lambda x: x, [0, 1, 5, 3]), 5)
-        self.assertEqual(argmax(lambda x, y: x + y, [(0, 1), (1, 5), (3, 2)]), (1, 5))
-        self.assertEqual(argmax(lambda x: x, ascii_lowercase), 'z')
-        self.assertEqual(argmax(lambda x: x * x, range(-5, 6)), -5)
 
 if __name__ == '__main__':
     unittest.main()
