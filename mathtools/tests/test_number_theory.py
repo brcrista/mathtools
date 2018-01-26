@@ -1,4 +1,5 @@
 import unittest
+from mathtools import product
 from mathtools.number_theory import *
 
 class Test(unittest.TestCase):

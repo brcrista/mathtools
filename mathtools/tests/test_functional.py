@@ -1,4 +1,5 @@
 import unittest
+from string import ascii_lowercase
 from mathtools.functional import *
 
 class Test(unittest.TestCase):
