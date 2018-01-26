@@ -3,6 +3,13 @@ Project Euler likes to use certain patterns for representing its problems, like 
 This module is for utility functions and classes that are useful for handling these Project Euler-specific situations.
 """
 
+from typing import List
+
+# compatibility
+from mathtools.combinatorics import *
+from mathtools.functional import *
+from mathtools.number_theory import *
+
 def parse_grid(grid: str) -> List[List[int]]:
     """
     Read a string representing a (possibly jagged) 2-D array of integers into a `List[List[int]]`.

@@ -7,12 +7,7 @@ at minimum verifying the correct answer.
 import os
 
 def main():
-    os.chdir('../core') # TODO use absolute path with $PROJECT_ROOT
-    print('Testing core library ...')
-    os.system('python test.py')
-    print()
-
-    os.chdir('../euler/01_50') # TODO use absolute path with $PROJECT_ROOT
+    os.chdir('../euler/problems') # TODO use absolute path with $PROJECT_ROOT
     problems_dir = os.getcwd()
 
     for problem in os.listdir():
