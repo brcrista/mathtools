@@ -1,5 +1,5 @@
 import unittest
-from mathtools.combinatorics import *
+from mathtools.combinatorics import binomial_coefficient
 
 class Test(unittest.TestCase):
     def test_binomial_coefficient(self):

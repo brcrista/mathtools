@@ -1,7 +1,9 @@
-from typing import TypeVar
-from _internal import is_iterable
+from typing import Any, TypeVar
 
 T = TypeVar('T')
+
+def _is_iterable(x: Any) -> bool:
+    return hasattr(x, '__iter__')
 
 def first(x):
     return x[0]
@@ -23,7 +25,7 @@ def argmax(f, args, *, key=identity):
     If two values of `f` are maximal, returns the first set of arguments in `args`
     that produces the maximal value of `f`.
     """
-    mapping = [(f(*x), x) if is_iterable(x) else (f(x), x) for x in args]
+    mapping = [(f(*x), x) if _is_iterable(x) else (f(x), x) for x in args]
     return second(max(mapping, key=compose(key, first)))
 
 def argmin(f, args, *, key=identity):
@@ -33,5 +35,5 @@ def argmin(f, args, *, key=identity):
     If two values of `f` are minimal, returns the first set of arguments in `args`
     that produces the minimal value of `f`.
     """
-    mapping = [(f(*x), x) if is_iterable(x) else (f(x), x) for x in args]
+    mapping = [(f(*x), x) if _is_iterable(x) else (f(x), x) for x in args]
     return second(min(mapping, key=compose(key, first)))
