@@ -1,5 +1,6 @@
 from math import factorial
 from typing import Callable, Iterator, Optional, TypeVar
+from mathtools import product
 
 T = TypeVar('T')
 
