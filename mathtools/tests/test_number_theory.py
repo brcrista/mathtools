@@ -36,7 +36,7 @@ class Test(unittest.TestCase):
         self.assertEqual(factors(8), [1, 2, 4, 8])
 
     def test_prime_factorization(self):
-        self.assertRaises(ValueError, lambda: factors(0))
+        self.assertRaises(ValueError, lambda: prime_factorization(0))
         self.assertEqual(prime_factorization(24), [2, 2, 2, 3])
         self.assertEqual(prime_factorization(42), [2, 3, 7])
         self.assertEqual(prime_factorization(100), [2, 2, 5, 5])

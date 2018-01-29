@@ -11,7 +11,7 @@ def recurrence(start: T, func: Callable[[T], Optional[T]]) -> Iterator[T]:
 
     Iteration stops when a `None` value is reached.
 
-    >>> list(recurrence(None, lambda _: 100))
+    >>> list(recurrence(None, lambda: 100))
     []
 
     >>> list(recurrence(1, lambda x: x + 1 if x < 5 else None))
