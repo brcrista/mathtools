@@ -1,14 +1,14 @@
-from typing import Any, TypeVar
+from typing import Any, Sequence, TypeVar
 
 T = TypeVar('T')
 
 def _is_iterable(x: Any) -> bool:
     return hasattr(x, '__iter__')
 
-def first(x):
+def first(x: Sequence[T]) -> T:
     return x[0]
 
-def second(x):
+def second(x: Sequence[T]) -> T:
     return x[1]
 
 def identity(x: T) -> T:
