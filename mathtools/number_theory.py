@@ -25,26 +25,44 @@ def factor_pairs(n: int) -> List[Tuple[int, int]]:
     return [(x, n // x) for x in range(1, floor(sqrt(n)) + 1) if divides(n, x)]
 
 def factors(n: int) -> List[int]:
-    """The factors of `n`."""
+    """The factors of a natural number `n`."""
     return sorted(set(chain.from_iterable(factor_pairs(n))))
 
 def proper_divisors(n: int) -> List[int]:
+    """All divisors of a natural number `n`, not including `n`."""
     return factors(n)[:-1]
 
 def is_prime(n: int) -> bool:
     """Whether a natural number `n` is prime."""
     return n > 1 and factors(n) == [1, n]
 
-def prime_factorization(n: int) -> List[int]:
-    """The prime factors of `n`, including duplicates."""
+def _prime_factorization(n: int) -> List[int]:
     if n == 1:
         return []
     else:
         first_prime = next(fac for fac in factors(n) if is_prime(fac))
         return [first_prime] + prime_factorization(n // first_prime)
 
+def prime_factorization(n: int) -> List[int]:
+    """
+    The prime factors of a natural number `n`, including duplicates.
+
+    >>> prime_factorization(1)
+    []
+
+    >>> prime_factorization(2)
+    [2]
+
+    >>> prime_factorization(12)
+    [2, 2, 3]
+    """
+    assert_natural(n)
+    return _prime_factorization(n)
+
+
 def eratosthenes(n: int) -> List[int]:
-    """All primes less than `n`, computed with the Sieve of Eratosthenes."""
+    """All primes less than a natural number `n`, computed with the Sieve of Eratosthenes."""
+    assert_natural(n)
     maybe_prime = [False] + [False] + [True for k in range(2, n)]
     for i in range(2, n):
         if maybe_prime[i]:

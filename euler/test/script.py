@@ -7,7 +7,7 @@ at minimum verifying the correct answer.
 import os
 
 def main():
-    os.chdir('../euler/problems') # TODO use absolute path with $PROJECT_ROOT
+    os.chdir('../problems') # TODO use absolute path with $PROJECT_ROOT
     problems_dir = os.getcwd()
 
     for problem in os.listdir():
