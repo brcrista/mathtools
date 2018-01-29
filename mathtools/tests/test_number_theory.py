@@ -27,16 +27,16 @@ class Test(unittest.TestCase):
         for n in composites:
             self.assertFalse(is_prime(n))
         self.assertFalse(is_prime(1))
+        self.assertFalse(is_prime(0))
 
     def test_factors(self):
+        self.assertRaises(ValueError, lambda: factors(0))
         self.assertEqual(factors(1), [1])
         self.assertEqual(factors(2), [1, 2])
         self.assertEqual(factors(8), [1, 2, 4, 8])
 
     def test_prime_factorization(self):
-        self.assertEqual(prime_factorization(1), [])
-        self.assertEqual(prime_factorization(2), [2])
-        self.assertEqual(prime_factorization(12), [2, 2, 3])
+        self.assertRaises(ValueError, lambda: factors(0))
         self.assertEqual(prime_factorization(24), [2, 2, 2, 3])
         self.assertEqual(prime_factorization(42), [2, 3, 7])
         self.assertEqual(prime_factorization(100), [2, 2, 5, 5])
