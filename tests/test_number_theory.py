@@ -1,6 +1,12 @@
+import doctest
 import unittest
 from mathtools import product
 from mathtools.number_theory import *
+
+def load_tests(loader, tests, ignore):
+    import mathtools.number_theory
+    tests.addTests(doctest.DocTestSuite(mathtools.number_theory))
+    return tests
 
 class Test(unittest.TestCase):
     def test_divides(self):
