@@ -1,4 +1,4 @@
 .PHONY: tests
 
 tests:
-	python -m unittest
+	pytest --doctest-modules
