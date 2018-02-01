@@ -1,59 +1,59 @@
-import unittest
+import pytest
 from mathtools import product
 from mathtools.number_theory import *
 
-class Test(unittest.TestCase):
-    def test_divides(self):
-        self.assertTrue(divides(1, 1))
-        self.assertTrue(divides(10, 5))
-        self.assertFalse(divides(5, 10))
-        self.assertTrue(divides(0, 2))
+def test_divides():
+    assert divides(1, 1) is True
+    assert divides(10, 5) is True
+    assert divides(5, 10) is False
+    assert divides(0, 2) is True
 
-    def test_even_odd(self):
-        evens = [-1000, -4, -2, 0, 2, 4, 1000]
-        odds = [-1001, -1, 1, 5, 7, 63]
-        for n in evens:
-            self.assertTrue(even(n))
-            self.assertFalse(odd(n))
-        for n in odds:
-            self.assertFalse(even(n))
-            self.assertTrue(odd(n))
+def test_even_odd():
+    evens = [-1000, -4, -2, 0, 2, 4, 1000]
+    odds = [-1001, -1, 1, 5, 7, 63]
+    for n in evens:
+        assert even(n) is True
+        assert odd(n) is False
+    for n in odds:
+        assert even(n) is False
+        assert odd(n) is True
 
-    def test_prime(self):
-        primes = [2, 3, 5, 7, 11, 13, 41]
-        composites = [4, 6, 12, 100, 10000]
-        for n in primes:
-            self.assertTrue(is_prime(n))
-        for n in composites:
-            self.assertFalse(is_prime(n))
-        self.assertFalse(is_prime(1))
-        self.assertFalse(is_prime(0))
+def test_prime():
+    primes = [2, 3, 5, 7, 11, 13, 41]
+    composites = [4, 6, 12, 100, 10000]
+    for n in primes:
+        assert is_prime(n) is True
+    for n in composites:
+        assert is_prime(n) is False
+    assert is_prime(1) is False
+    assert is_prime(0) is False
 
-    def test_factors(self):
-        self.assertRaises(ValueError, lambda: factors(0))
-        self.assertEqual(factors(1), [1])
-        self.assertEqual(factors(2), [1, 2])
-        self.assertEqual(factors(8), [1, 2, 4, 8])
+def test_factors():
+    with pytest.raises(ValueError):
+        factors(0)
 
-    def test_prime_factorization(self):
-        self.assertRaises(ValueError, lambda: prime_factorization(0))
-        self.assertEqual(prime_factorization(24), [2, 2, 2, 3])
-        self.assertEqual(prime_factorization(42), [2, 3, 7])
-        self.assertEqual(prime_factorization(100), [2, 2, 5, 5])
-        self.assertEqual(prime_factorization(47231016), [2, 2, 2, 3, 7, 41, 6857])
+    assert factors(1) == [1]
+    assert factors(2), [1 == 2]
+    assert factors(8), [1, 2, 4 == 8]
 
-    def test_product(self):
-        self.assertEqual(product([]), 1)
-        self.assertEqual(product([1, 2, 3]), 6)
-        self.assertEqual(product(range(0, 10000)), 0)
+def test_prime_factorization():
+    with pytest.raises(ValueError):
+        prime_factorization(0)
 
-    def test_lcm(self):
-        self.assertEqual(lcm(0, 100), 0)
-        self.assertEqual(lcm(1, 1), 1)
-        self.assertEqual(lcm(2, 4), 4)
-        self.assertEqual(lcm(1, 123456), 123456)
-        self.assertEqual(lcm(4, 6), 12)
-        self.assertEqual(lcm(6, 4), 12)
+    assert prime_factorization(24), [2, 2, 2 == 3]
+    assert prime_factorization(42), [2, 3 == 7]
+    assert prime_factorization(100), [2, 2, 5 == 5]
+    assert prime_factorization(47231016), [2, 2, 2, 3, 7, 41 == 6857]
 
-if __name__ == '__main__':
-    unittest.main()
+def test_product():
+    assert product([]) == 1
+    assert product([1, 2, 3]) == 6
+    assert product(range(0, 10000)) == 0
+
+def test_lcm():
+    assert lcm(0, 100) == 0
+    assert lcm(1, 1) == 1
+    assert lcm(2, 4) == 4
+    assert lcm(1, 123456) == 123456
+    assert lcm(4, 6) == 12
+    assert lcm(6, 4) == 12

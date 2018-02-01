@@ -1,15 +1,10 @@
-import unittest
 from string import ascii_lowercase
 from mathtools.functional import *
 
-class Test(unittest.TestCase):
-    def test_argmax(self):
-        self.assertEqual(argmax(identity, ascii_lowercase), 'z')
-        self.assertEqual(argmax(lambda x: x * x, range(-5, 6)), -5)
+def test_argmax():
+    assert argmax(identity, ascii_lowercase) == 'z'
+    assert argmax(lambda x: x * x, range(-5, 6)) == -5
 
-    def test_argmin(self):
-        self.assertEqual(argmin(identity, ascii_lowercase), 'a')
-        self.assertEqual(argmin(lambda x: x * x, range(-5, 6)), 0)
-
-if __name__ == '__main__':
-    unittest.main()
+def test_argmin():
+    assert argmin(identity, ascii_lowercase) == 'a'
+    assert argmin(lambda x: x * x, range(-5, 6)) == 0
