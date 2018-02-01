@@ -3,8 +3,8 @@
 all: typecheck tests
 
 typecheck:
-	mypy mathtools
-	mypy tests --ignore-missing-imports
+	mypy mathtools --strict
+	mypy tests --ignore-missing-imports --strict
 
 tests:
 	pytest --doctest-modules

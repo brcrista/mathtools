@@ -1,6 +1,6 @@
 from mathtools.combinatorics import binomial_coefficient
 
-def test_binomial_coefficient():
+def test_binomial_coefficient() -> None:
     assert binomial_coefficient(1, 0) == 1
     assert binomial_coefficient(1, 1) == 1
     assert binomial_coefficient(10, 10) == 1

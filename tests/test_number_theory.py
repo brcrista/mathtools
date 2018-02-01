@@ -2,13 +2,13 @@ import pytest
 from mathtools import product
 from mathtools.number_theory import divides, even, odd, is_prime, factors, prime_factorization, lcm
 
-def test_divides():
+def test_divides() -> None:
     assert divides(1, 1) is True
     assert divides(10, 5) is True
     assert divides(5, 10) is False
     assert divides(0, 2) is True
 
-def test_even_odd():
+def test_even_odd() -> None:
     evens = [-1000, -4, -2, 0, 2, 4, 1000]
     odds = [-1001, -1, 1, 5, 7, 63]
     for n in evens:
@@ -18,7 +18,7 @@ def test_even_odd():
         assert even(n) is False
         assert odd(n) is True
 
-def test_is_prime():
+def test_is_prime() -> None:
     primes = [2, 3, 5, 7, 11, 13, 41]
     composites = [4, 6, 12, 100, 10000]
     for n in primes:
@@ -28,7 +28,7 @@ def test_is_prime():
     assert is_prime(1) is False
     assert is_prime(0) is False
 
-def test_factors():
+def test_factors() -> None:
     with pytest.raises(ValueError):
         factors(0)
 
@@ -36,7 +36,7 @@ def test_factors():
     assert factors(2), [1, 2]
     assert factors(8), [1, 2, 4, 8]
 
-def test_prime_factorization():
+def test_prime_factorization() -> None:
     with pytest.raises(ValueError):
         prime_factorization(0)
 
@@ -45,12 +45,12 @@ def test_prime_factorization():
     assert prime_factorization(100) == [2, 2, 5, 5]
     assert prime_factorization(47231016) == [2, 2, 2, 3, 7, 41, 6857]
 
-def test_product():
+def test_product() -> None:
     assert product([]) == 1
     assert product([1, 2, 3]) == 6
     assert product(range(0, 10000)) == 0
 
-def test_lcm():
+def test_lcm() -> None:
     assert lcm(0, 100) == 0
     assert lcm(1, 1) == 1
     assert lcm(2, 4) == 4

@@ -2,9 +2,9 @@ from math import factorial
 from typing import Callable, Iterator, Optional, TypeVar
 from mathtools import product
 
-T = TypeVar('T')
+_T = TypeVar('_T')
 
-def recurrence(start: T, func: Callable[[T], Optional[T]]) -> Iterator[T]:
+def recurrence(start: _T, func: Callable[[_T], Optional[_T]]) -> Iterator[_T]:
     """
     Return an `Iterator` beginning with `start` where each element is created
     by applying `func` to the previous element.
@@ -22,7 +22,7 @@ def recurrence(start: T, func: Callable[[T], Optional[T]]) -> Iterator[T]:
     >>> list(itertools.islice(it, 5))
     [1, 2, 4, 8, 16]
     """
-    current = start
+    current: Optional[_T] = start
     while current is not None:
         yield current
         current = func(current)
