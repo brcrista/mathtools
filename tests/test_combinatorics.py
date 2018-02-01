@@ -1,11 +1,5 @@
-import doctest
 import unittest
 from mathtools.combinatorics import *
-
-def load_tests(loader, tests, ignore):
-    import mathtools.combinatorics
-    tests.addTests(doctest.DocTestSuite(mathtools.combinatorics))
-    return tests
 
 class Test(unittest.TestCase):
     def test_binomial_coefficient(self):

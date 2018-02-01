@@ -1,12 +1,6 @@
-import doctest
 import unittest
 from string import ascii_lowercase
 from mathtools.functional import *
-
-def load_tests(loader, tests, ignore):
-    import mathtools.functional
-    tests.addTests(doctest.DocTestSuite(mathtools.functional))
-    return tests
 
 class Test(unittest.TestCase):
     def test_argmax(self):
