@@ -45,11 +45,6 @@ def test_prime_factorization() -> None:
     assert prime_factorization(100) == [2, 2, 5, 5]
     assert prime_factorization(47231016) == [2, 2, 2, 3, 7, 41, 6857]
 
-def test_product() -> None:
-    assert product([]) == 1
-    assert product([1, 2, 3]) == 6
-    assert product(range(0, 10000)) == 0
-
 def test_lcm() -> None:
     assert lcm(0, 100) == 0
     assert lcm(1, 1) == 1
