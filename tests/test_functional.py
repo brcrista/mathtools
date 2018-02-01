@@ -1,5 +1,5 @@
 from string import ascii_lowercase
-from mathtools.functional import *
+from mathtools.functional import argmax, argmin, identity
 
 def test_argmax():
     assert argmax(identity, ascii_lowercase) == 'z'

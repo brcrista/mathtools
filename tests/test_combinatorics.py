@@ -1,4 +1,4 @@
-from mathtools.combinatorics import *
+from mathtools.combinatorics import binomial_coefficient
 
 def test_binomial_coefficient():
     assert binomial_coefficient(1, 0) == 1

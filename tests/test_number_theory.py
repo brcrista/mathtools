@@ -1,6 +1,6 @@
 import pytest
 from mathtools import product
-from mathtools.number_theory import *
+from mathtools.number_theory import divides, even, odd, is_prime, factors, prime_factorization, lcm
 
 def test_divides():
     assert divides(1, 1) is True
@@ -18,7 +18,7 @@ def test_even_odd():
         assert even(n) is False
         assert odd(n) is True
 
-def test_prime():
+def test_is_prime():
     primes = [2, 3, 5, 7, 11, 13, 41]
     composites = [4, 6, 12, 100, 10000]
     for n in primes:
