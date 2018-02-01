@@ -21,7 +21,7 @@ def product(xs: Iterable[int]) -> int:
 def product(xs: Iterable[float]) -> float:
     pass
 
-def product(xs: Any) -> Any: # TODO type hints
+def product(xs: Iterable[Union[int, float]]) -> Union[int, float]:
     """The product of all numbers in an `Iterable`."""
     return reduce(mul, xs, 1)
 #pylint: enable=unused-argument,function-redefined
