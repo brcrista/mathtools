@@ -33,8 +33,8 @@ def test_factors():
         factors(0)
 
     assert factors(1) == [1]
-    assert factors(2), [1 == 2]
-    assert factors(8), [1, 2, 4 == 8]
+    assert factors(2), [1, 2]
+    assert factors(8), [1, 2, 4, 8]
 
 def test_prime_factorization():
     with pytest.raises(ValueError):
