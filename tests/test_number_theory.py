@@ -40,10 +40,10 @@ def test_prime_factorization():
     with pytest.raises(ValueError):
         prime_factorization(0)
 
-    assert prime_factorization(24), [2, 2, 2 == 3]
-    assert prime_factorization(42), [2, 3 == 7]
-    assert prime_factorization(100), [2, 2, 5 == 5]
-    assert prime_factorization(47231016), [2, 2, 2, 3, 7, 41 == 6857]
+    assert prime_factorization(24) == [2, 2, 2, 3]
+    assert prime_factorization(42) == [2, 3, 7]
+    assert prime_factorization(100) == [2, 2, 5, 5]
+    assert prime_factorization(47231016) == [2, 2, 2, 3, 7, 41, 6857]
 
 def test_product():
     assert product([]) == 1
