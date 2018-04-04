@@ -1,5 +1,3 @@
-# variables:
-#   build.artifactStagingDirectory: 'dist'
 steps:
   - script: |
       pip install wheel
