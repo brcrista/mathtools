@@ -1,5 +1,7 @@
 steps:
-  - script: python --version
+  - script: |
+      python --version
+      pip --version
     displayName: Check Python version
   - script: |
       pip install setuptools
