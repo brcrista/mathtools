@@ -4,3 +4,9 @@ steps:
       mypy mathtools --strict
       mypy tests --ignore-missing-imports --strict
   - script: pytest --doctest-modules
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish artifacts'
+    inputs:
+      pathToPublish: '$(build.artifactStagingDirectory)'
+      artifactName: 'artifact'
+      artifactType: 'container'
