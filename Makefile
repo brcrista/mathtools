@@ -1,6 +1,6 @@
-.PHONY: all tests typecheck
+.PHONY: all tests typecheck wheel
 
-all: typecheck tests
+all: typecheck tests wheel
 
 typecheck:
 	mypy mathtools --strict
@@ -8,3 +8,6 @@ typecheck:
 
 tests:
 	pytest --doctest-modules
+
+wheel:
+	python setup.py bdist_wheel
