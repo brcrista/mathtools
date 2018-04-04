@@ -1,6 +1,10 @@
-.PHONY: all tests typecheck wheel
+.PHONY: all pip tests typecheck wheel
 
-all: typecheck tests wheel
+all: pip typecheck tests wheel
+
+pip:
+	pip install wheel
+	pip install -r requirements.txt
 
 typecheck:
 	mypy mathtools --strict
