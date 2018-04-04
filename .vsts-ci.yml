@@ -1,4 +1,6 @@
 steps:
+  - script: python --version
+    displayName: Check Python version
   - script: |
       pip install setuptools
       pip install wheel
