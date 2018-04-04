@@ -1,5 +1,5 @@
-variables:
-  build.artifactStagingDirectory: 'dist'
+# variables:
+#   build.artifactStagingDirectory: 'dist'
 steps:
   - script: |
       pip install wheel
@@ -16,6 +16,6 @@ steps:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish artifacts'
     inputs:
-      pathToPublish: '$(build.artifactStagingDirectory)'
+      pathToPublish: 'dist'
       artifactName: 'artifact'
       artifactType: 'container'
