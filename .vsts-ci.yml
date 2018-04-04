@@ -1,3 +1,5 @@
+variables:
+  build.artifactStagingDirectory: 'dist'
 steps:
   - script: pip install -r requirements.txt
   - script: |
