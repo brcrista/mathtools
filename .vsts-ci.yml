@@ -1,12 +1,19 @@
 steps:
-  - script: pip install -r requirements.txt
+  - script: |
+      pip install wheel
+      pip install -r requirements.txt
+    displayName: Pip Install
   - script: |
       mypy mathtools --strict
       mypy tests --ignore-missing-imports --strict
+    displayName: mypy
   - script: pytest --doctest-modules
+    displayName: pytest
+  - script: python setup.py bdist_wheel
+    displayName: Build wheel
   - task: PublishBuildArtifacts@1
     displayName: 'Publish artifacts'
     inputs:
-      pathToPublish: '$(build.artifactStagingDirectory)'
+      pathToPublish: 'dist'
       artifactName: 'artifact'
       artifactType: 'container'
