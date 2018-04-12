@@ -8,7 +8,9 @@ steps:
       python --version
       pip --version
     displayName: Check Python version
-  - script: pip install -r requirements.txt
+  - script: |
+      pip install -r requirements.txt
+      pip install wheel
     displayName: Pip Install
   - script: |
       mypy mathtools --strict
