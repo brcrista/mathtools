@@ -8,10 +8,10 @@ steps:
       python --version
       pip --version
     displayName: Check Python version
-  - script: |
-      pip install -r requirements.txt
-      pip install wheel
+  - script: pip install -r requirements.txt
     displayName: Pip Install
+  - script: pip install wheel
+    displayName: Install Wheel
   - script: |
       mypy mathtools --strict
       mypy tests --ignore-missing-imports --strict
