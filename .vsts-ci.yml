@@ -21,7 +21,7 @@ phases:
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '$(PYTHON_VERSION)'
-      architecture: 'x64'
+      architecture: 'x86'
       addToPath: 'true'
   - script: python -m pip install --upgrade pip && pip install -r requirements.txt
     displayName: 'Install Dependencies'
@@ -37,7 +37,7 @@ phases:
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '3.6'
-      architecture: 'x64'
+      architecture: 'x86'
       addToPath: 'true'
   - script: python -m pip install --upgrade pip && pip install wheel && python setup.py bdist_wheel
     displayName: Build Wheel
