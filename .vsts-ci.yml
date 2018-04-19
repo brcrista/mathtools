@@ -7,12 +7,12 @@ phases:
   displayName: 'Build and Test'
   queue:
     matrix:
-      # Python27:
-      #   PYTHON_VERSION: '2.7'
-      # Python34:
-      #   PYTHON_VERSION: '3.4'
-      # Python35:
-      #   PYTHON_VERSION: '3.5'
+      Python27:
+        PYTHON_VERSION: '2.7'
+      Python34:
+        PYTHON_VERSION: '3.4'
+      Python35:
+        PYTHON_VERSION: '3.5'
       Python36:
         PYTHON_VERSION: '3.6'
       Python37-dev:
