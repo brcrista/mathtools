@@ -6,7 +6,6 @@ phases:
 - phase: 'Phase_1'
   displayName: 'Build and Test'
   queue:
-    name: 'Hosted Linux Preview'
     matrix:
       Python36:
         PYTHON_VERSION: '3.6'
@@ -22,14 +21,16 @@ phases:
     displayName: 'Install Dependencies'
   # - script: 'pip install flake8 && flake8'
   #   displayName: 'Flake8'
-  - script: pip install pytest && pytest tests --doctest-modules
+  - script: pip install pytest && pytest tests --doctest-modules --junitxml=junit/test-results.xml
     displayName: 'pytest'
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: '**/test-results.xml'
+      testRunTitle: 'Python $(python.version)'
 
 - phase: 'Phase_2'
   displayName: 'Publish'
   dependsOn: 'Phase_1'
-  queue:
-    name: 'Hosted Linux Preview'
   steps:
   - task: UsePythonVersion@0
     inputs:
