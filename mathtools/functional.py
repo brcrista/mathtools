@@ -31,16 +31,16 @@ def compose(f: Callable[[_T], _U], g: Callable[..., _T]) -> Callable[..., _U]:
 
 #pylint: disable=unused-argument,function-redefined
 @overload
-def argmax(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[[_T], Any]=identity) -> Union[_T, Iterable[_T]]:
+def argmax(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[[_T], Any] = identity) -> Union[_T, Iterable[_T]]:
     # TODO using `Union` return type to work around error: "Overloaded function signatures 1 and 2 overlap with incompatible return types"
     pass
 
 @overload
-def argmax(f: Callable[..., Any], args: Iterable[Iterable[_T]], *, key: Callable[[_T], Any]=identity) -> Union[_T, Iterable[_T]]:
+def argmax(f: Callable[..., Any], args: Iterable[Iterable[_T]], *, key: Callable[[_T], Any] = identity) -> Union[_T, Iterable[_T]]:
     # TODO using `Union` return type to work around error: "Overloaded function signatures 1 and 2 overlap with incompatible return types"
     pass
 
-def argmax(f: Any, args: Any, *, key: Any=identity) -> Any:
+def argmax(f: Any, args: Any, *, key: Any = identity) -> Any:
     """
     The element in `args` that produces the largest output of `f`.
     Each element of `args` should be an iterable of the parameter types of `f`.
@@ -58,16 +58,16 @@ def argmax(f: Any, args: Any, *, key: Any=identity) -> Any:
 
 #pylint: disable=unused-argument,function-redefined
 @overload
-def argmin(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[[_T], Any]=identity) -> Union[_T, Iterable[_T]]:
+def argmin(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[[_T], Any] = identity) -> Union[_T, Iterable[_T]]:
     # TODO using `Union` return type to work around error: "Overloaded function signatures 1 and 2 overlap with incompatible return types"
     pass
 
 @overload
-def argmin(f: Callable[..., Any], args: Iterable[Iterable[_T]], *, key: Callable[[_T], Any]=identity) -> Union[_T, Iterable[_T]]:
+def argmin(f: Callable[..., Any], args: Iterable[Iterable[_T]], *, key: Callable[[_T], Any] = identity) -> Union[_T, Iterable[_T]]:
     # TODO using `Union` return type to work around error: "Overloaded function signatures 1 and 2 overlap with incompatible return types"
     pass
 
-def argmin(f: Any, args: Any, *, key: Any=identity) -> Any:
+def argmin(f: Any, args: Any, *, key: Any = identity) -> Any:
     """
     The element in `args` that produces the smallest output of `f`.
     Each element of `args` should be an iterable of the parameter types of `f`.
