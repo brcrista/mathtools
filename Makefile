@@ -1,6 +1,10 @@
 .PHONY: all
 all: pip typecheck tests sdist wheel
 
+.PHONY: clean
+clean:
+	rm -rf .mypy_cache build dist *.egg-info
+
 .PHONY: pip
 pip:
 	pip install -r requirements.txt
