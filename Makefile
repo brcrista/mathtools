@@ -27,3 +27,7 @@ sdist:
 wheel:
 	pip install wheel
 	python setup.py bdist_wheel
+
+.PHONY: upload
+upload:
+	twine upload --repository-url https://test.pypi.org/legacy/ dist/*
