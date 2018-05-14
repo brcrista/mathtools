@@ -4,6 +4,7 @@ all: pip typecheck tests sdist wheel
 .PHONY: clean
 clean:
 	rm -rf .mypy_cache build dist *.egg-info
+	rm -rf **/__pycache__
 
 .PHONY: pip
 pip:
