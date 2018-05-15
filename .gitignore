@@ -3,6 +3,7 @@
 .vscode/
 build/
 dist/
+venv/
 *.egg-info/
 
 *.pyc
