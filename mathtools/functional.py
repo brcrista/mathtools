@@ -1,16 +1,10 @@
-from typing import overload, Any, Callable, Iterable, Sequence, TypeVar, Union
+from typing import overload, Any, Callable, Iterable, Tuple, TypeVar, Union
 
 _T = TypeVar('_T')
 _U = TypeVar('_U')
 
 def _is_iterable(x: Any) -> bool:
     return hasattr(x, '__iter__')
-
-def first(x: Sequence[_T]) -> _T:
-    return x[0]
-
-def second(x: Sequence[_T]) -> _T:
-    return x[1]
 
 def identity(x: _T) -> _T:
     """The identity function."""
@@ -29,45 +23,10 @@ def compose(f: Callable[[_T], _U], g: Callable[..., _T]) -> Callable[..., _U]:
     """
     return lambda *args: f(g(*args))
 
-#pylint: disable=unused-argument,function-redefined
-@overload
-def argmax(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[[_T], Any] = identity) -> Union[_T, Iterable[_T]]:
-    # TODO using `Union` return type to work around error: "Overloaded function signatures 1 and 2 overlap with incompatible return types"
-    pass
+def _map_with_args(f: Callable[..., _T], args: Iterable[Any]) -> Iterable[Tuple[Any, _T]]:
+    return ((x, f(*x)) if _is_iterable(x) else (x, f(x)) for x in args)
 
-@overload
-def argmax(f: Callable[..., Any], args: Iterable[Iterable[_T]], *, key: Callable[[_T], Any] = identity) -> Union[_T, Iterable[_T]]:
-    # TODO using `Union` return type to work around error: "Overloaded function signatures 1 and 2 overlap with incompatible return types"
-    pass
-
-def argmax(f: Any, args: Any, *, key: Any = identity) -> Any:
-    """
-    The element in `args` that produces the largest output of `f`.
-    Each element of `args` should be an iterable of the parameter types of `f`.
-    If two values of `f` are maximal, returns the first set of arguments in `args`
-    that produces the maximal value of `f`.
-
-    >>> argmax(identity, [0, 1, 5, 3])
-    5
-    >>> argmax(lambda x, y: x + y, [(0, 1), (1, 5), (3, 2)])
-    (1, 5)
-    """
-    mapping = [(f(*x), x) if _is_iterable(x) else (f(x), x) for x in args]
-    return second(max(mapping, key=compose(key, first)))
-#pylint: enable=unused-argument,function-redefined
-
-#pylint: disable=unused-argument,function-redefined
-@overload
-def argmin(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[[_T], Any] = identity) -> Union[_T, Iterable[_T]]:
-    # TODO using `Union` return type to work around error: "Overloaded function signatures 1 and 2 overlap with incompatible return types"
-    pass
-
-@overload
-def argmin(f: Callable[..., Any], args: Iterable[Iterable[_T]], *, key: Callable[[_T], Any] = identity) -> Union[_T, Iterable[_T]]:
-    # TODO using `Union` return type to work around error: "Overloaded function signatures 1 and 2 overlap with incompatible return types"
-    pass
-
-def argmin(f: Any, args: Any, *, key: Any = identity) -> Any:
+def argmin(f: Callable[..., Any], args: Iterable[Any], *, key: Callable[..., Any] = identity) -> Any:
     """
     The element in `args` that produces the smallest output of `f`.
     Each element of `args` should be an iterable of the parameter types of `f`.
@@ -79,6 +38,18 @@ def argmin(f: Any, args: Any, *, key: Any = identity) -> Any:
     >>> argmin(lambda x, y: x + y, [(0, 1), (1, 5), (3, 2)])
     (0, 1)
     """
-    mapping = [(f(*x), x) if _is_iterable(x) else (f(x), x) for x in args]
-    return second(min(mapping, key=compose(key, first)))
-#pylint: enable=unused-argument,function-redefined
+    return min(_map_with_args(f, args), key=lambda x: key(x[1]))[0]
+
+def argmax(f: Callable[..., Any], args: Iterable[Any], *, key: Callable[..., Any] = identity) -> Any:
+    """
+    The element in `args` that produces the largest output of `f`.
+    Each element of `args` should be an iterable of the parameter types of `f`.
+    If two values of `f` are maximal, returns the first set of arguments in `args`
+    that produces the maximal value of `f`.
+
+    >>> argmax(identity, [0, 1, 5, 3])
+    5
+    >>> argmax(lambda x, y: x + y, [(0, 1), (1, 5), (3, 2)])
+    (1, 5)
+    """
+    return max(_map_with_args(f, args), key=lambda x: key(x[1]))[0]
