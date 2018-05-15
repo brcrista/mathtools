@@ -23,8 +23,8 @@ def compose(f: Callable[[_T], _U], g: Callable[..., _T]) -> Callable[..., _U]:
     """
     return lambda *args: f(g(*args))
 
-def tuple_args(f: Callable[..., _T]) -> Callable[[Tuple], _T]:
-    """Convert a function to take a tuple of its arguments."""
+def tuple_params(f: Callable[..., _T]) -> Callable[[Tuple], _T]:
+    """Convert a function to take a tuple of its parameters."""
     def tupled_f(args: Tuple) -> _T:
         return f(*args)
     return tupled_f
@@ -40,7 +40,7 @@ def argmin(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[..., Any
 
     >>> argmin(identity, [0, 1, 5, 3])
     0
-    >>> argmin(tuple_args(lambda x, y: x + y), [(0, 1), (1, 5), (3, 2)])
+    >>> argmin(tuple_params(lambda x, y: x + y), [(0, 1), (1, 5), (3, 2)])
     (0, 1)
     """
     return min(_map_with_args(f, args), key=lambda x: key(x[1]))[0]
@@ -53,7 +53,7 @@ def argmax(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[..., Any
 
     >>> argmax(identity, [0, 1, 5, 3])
     5
-    >>> argmax(tuple_args(lambda x, y: x + y), [(0, 1), (1, 5), (3, 2)])
+    >>> argmax(tuple_params(lambda x, y: x + y), [(0, 1), (1, 5), (3, 2)])
     (1, 5)
     """
     return max(_map_with_args(f, args), key=lambda x: key(x[1]))[0]
