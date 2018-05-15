@@ -32,7 +32,7 @@ def tuple_args(f: Callable[..., _T]) -> Callable[[Tuple], _T]:
 def _map_with_args(f: Callable[..., _U], args: Iterable[_T]) -> Iterable[Tuple[_T, _U]]:
     return zip(args, map(f, args))
 
-def argmin(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[..., Any] = identity) -> _T:
+def argmin(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[..., Any]=identity) -> _T:
     """
     The element in `args` that produces the smallest output of `f`.
     If two values of `f` are minimal, returns the first set of arguments in `args`
@@ -45,7 +45,7 @@ def argmin(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[..., Any
     """
     return min(_map_with_args(f, args), key=lambda x: key(x[1]))[0]
 
-def argmax(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[..., Any] = identity) -> _T:
+def argmax(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[..., Any]=identity) -> _T:
     """
     The element in `args` that produces the largest output of `f`.
     Each element of `args` should be an iterable of the parameter types of `f`.
