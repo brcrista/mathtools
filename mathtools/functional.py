@@ -48,7 +48,6 @@ def argmin(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[..., Any
 def argmax(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[..., Any]=identity) -> _T:
     """
     The element in `args` that produces the largest output of `f`.
-    Each element of `args` should be an iterable of the parameter types of `f`.
     If two values of `f` are maximal, returns the first set of arguments in `args`
     that produces the maximal value of `f`.
 
