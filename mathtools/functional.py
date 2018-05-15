@@ -1,4 +1,4 @@
-from typing import overload, Any, Callable, Iterable, Tuple, TypeVar, Union
+from typing import Any, Callable, Iterable, Tuple, TypeVar
 
 _T = TypeVar('_T')
 _U = TypeVar('_U')
