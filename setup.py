@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='mathtools',
-    version='0.2.1',
+    version='0.3.0',
     description='A library for doing discrete math in Python',
     packages=['mathtools'],
     python_requires='~=3.6',
