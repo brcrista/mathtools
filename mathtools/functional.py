@@ -23,24 +23,29 @@ def compose(f: Callable[[_T], _U], g: Callable[..., _T]) -> Callable[..., _U]:
     """
     return lambda *args: f(g(*args))
 
-def _map_with_args(f: Callable[..., _T], args: Iterable[Any]) -> Iterable[Tuple[Any, _T]]:
-    return ((x, f(*x)) if _is_iterable(x) else (x, f(x)) for x in args)
+def tuple_args(f: Callable[..., _T]) -> Callable[[Tuple], _T]:
+    """Convert a function to take a tuple for its arguments."""
+    def tupled_f(args: Tuple) -> _T:
+        return f(*args)
+    return tupled_f
 
-def argmin(f: Callable[..., Any], args: Iterable[Any], *, key: Callable[..., Any] = identity) -> Any:
+def _map_with_args(f: Callable[..., _U], args: Iterable[_T]) -> Iterable[Tuple[_T, _U]]:
+    return zip(args, map(f, args))
+
+def argmin(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[..., Any] = identity) -> _T:
     """
     The element in `args` that produces the smallest output of `f`.
-    Each element of `args` should be an iterable of the parameter types of `f`.
     If two values of `f` are minimal, returns the first set of arguments in `args`
     that produces the minimal value of `f`.
 
     >>> argmin(identity, [0, 1, 5, 3])
     0
-    >>> argmin(lambda x, y: x + y, [(0, 1), (1, 5), (3, 2)])
+    >>> argmin(tuple_args(lambda x, y: x + y), [(0, 1), (1, 5), (3, 2)])
     (0, 1)
     """
     return min(_map_with_args(f, args), key=lambda x: key(x[1]))[0]
 
-def argmax(f: Callable[..., Any], args: Iterable[Any], *, key: Callable[..., Any] = identity) -> Any:
+def argmax(f: Callable[[_T], Any], args: Iterable[_T], *, key: Callable[..., Any] = identity) -> _T:
     """
     The element in `args` that produces the largest output of `f`.
     Each element of `args` should be an iterable of the parameter types of `f`.
@@ -49,7 +54,7 @@ def argmax(f: Callable[..., Any], args: Iterable[Any], *, key: Callable[..., Any
 
     >>> argmax(identity, [0, 1, 5, 3])
     5
-    >>> argmax(lambda x, y: x + y, [(0, 1), (1, 5), (3, 2)])
+    >>> argmax(tuple_args(lambda x, y: x + y), [(0, 1), (1, 5), (3, 2)])
     (1, 5)
     """
     return max(_map_with_args(f, args), key=lambda x: key(x[1]))[0]
