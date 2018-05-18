@@ -9,9 +9,9 @@ _T = TypeVar('_T')
 def recurrence(start: List[_T], func: Callable[..., Optional[_T]]) -> Iterator[_T]:
     """
     Return an `Iterator` beginning with `start` where each element is created
-    by applying `func` to the previous `arity` elements.
+    by applying `func` to the previous `len(start)` elements.
 
-    `func()` should take `arity` parameters of type `_T`.
+    `func()` should take `len(start)` parameters of type `_T`.
     Iteration stops when a `None` value is reached.
 
     >>> import itertools
