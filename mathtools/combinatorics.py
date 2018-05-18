@@ -18,9 +18,9 @@ def recurrence(start: List[_T], func: Callable[..., _T]) -> Iterator[_T]:
     >>> take(5, it)
     [1, 2, 4, 8, 16]
     """
-    window = start
-    yield from iter(start)
+    yield from start
 
+    window = start
     value = func(*window)
     while value is not None:
         yield value
