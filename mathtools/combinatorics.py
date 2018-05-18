@@ -14,17 +14,12 @@ def recurrence(start: List[_T], func: Callable[..., Optional[_T]]) -> Iterator[_
     `func()` should take `len(start)` parameters of type `_T`.
     Iteration stops when a `None` value is reached.
 
-    >>> import itertools
-    >>> it = recurrence([], lambda: 100)
-    >>> list(itertools.islice(it, 3))
-    [100, 100, 100]
-
     >>> list(recurrence([1], lambda x: x + 1 if x < 5 else None))
     [1, 2, 3, 4, 5]
 
-    >>> import itertools
+    >>> from .iterator import take
     >>> it = recurrence([1], lambda x: x * 2)
-    >>> list(itertools.islice(it, 5))
+    >>> take(5, it)
     [1, 2, 4, 8, 16]
     """
     window = start

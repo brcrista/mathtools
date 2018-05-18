@@ -9,6 +9,7 @@ from typing import overload, Any, Iterable, Union
 __all__ = [
     "combinatorics",
     "functional",
+    "iterator",
     "number_theory"
 ]
 

@@ -1,4 +1,13 @@
-from mathtools.combinatorics import binomial_coefficient
+from mathtools.iterator import take
+from mathtools.combinatorics import binomial_coefficient, recurrence
+
+def test_recurrence() -> None:
+    it = recurrence([], lambda: 100)
+    assert take(3, it) == [100, 100, 100]
+
+    it = recurrence(['a', 'b', 'c'], lambda x, y, z: x + y + z)
+    assert take(5, it) == ['a', 'b', 'c', 'abc', 'bcabc']
+
 
 def test_binomial_coefficient() -> None:
     assert binomial_coefficient(1, 0) == 1
