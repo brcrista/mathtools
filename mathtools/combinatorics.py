@@ -22,7 +22,7 @@ def recurrence(start: List[_T], func: Callable[..., _T]) -> Iterator[_T]:
 
     window = start
     value = func(*window)
-    while value is not None:
+    while True:
         yield value
         window += [value]
         window = window[1:]
