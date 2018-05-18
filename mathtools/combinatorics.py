@@ -1,5 +1,7 @@
 from math import factorial
+from operator import add
 from typing import Callable, Iterator, List, Optional, TypeVar
+
 from mathtools import product
 
 _T = TypeVar('_T')
@@ -44,13 +46,7 @@ def fibonacci_numbers() -> Iterator[int]:
     >>> list(itertools.islice(fib, 5))
     [1, 2, 3, 5, 8]
     """
-    last1 = 1
-    last2 = 0
-    while True:
-        fib = last1 + last2
-        last2 = last1
-        last1 = fib
-        yield fib
+    return recurrence([1, 2], add)
 
 def binomial_coefficient(n: int, k: int) -> int:
     """
