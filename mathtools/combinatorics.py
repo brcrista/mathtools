@@ -13,7 +13,7 @@ def recurrence(start: List[_T], func: Callable[..., _T]) -> Iterator[_T]:
 
     `func()` should take `len(start)` parameters of type `_T`.
 
-    >>> from .iterator import take
+    >>> from .iterable import take
     >>> it = recurrence([1], lambda x: x * 2)
     >>> take(5, it)
     [1, 2, 4, 8, 16]
