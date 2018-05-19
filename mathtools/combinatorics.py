@@ -24,7 +24,7 @@ def recurrence(start: List[_T], func: Callable[..., _T]) -> Iterator[_T]:
     value = func(*window)
     while True:
         yield value
-        window += [value]
+        window.append(value)
         window = window[1:]
         value = func(*window)
 
