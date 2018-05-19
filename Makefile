@@ -6,18 +6,18 @@ clean:
 	rm -rf .mypy_cache build dist *.egg-info
 	rm -rf **/__pycache__
 
-.PHONY: pip
-pip:
-	pip install -r requirements.txt
+.PHONY: dependencies
+dependencies:
+	pip install -r requirements-dev.txt
 
 .PHONY: typecheck
 typecheck:
 	mypy mathtools --strict
 	mypy tests --ignore-missing-imports --strict
 
-.PHONY: test
-test:
-	pytest --doctest-modules
+.PHONY: tests
+tests:
+	pytest --doctest-modules --junitxml=junit/test-results.xml
 
 .PHONY: sdist
 sdist:
