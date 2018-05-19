@@ -7,9 +7,10 @@ from operator import mul
 from typing import overload, Any, Iterable, Union
 
 __all__ = [
-    "combinatorics",
-    "functional",
-    "number_theory"
+    'combinatorics',
+    'functional',
+    'iterator',
+    'number_theory'
 ]
 
 #pylint: disable=unused-argument,function-redefined
