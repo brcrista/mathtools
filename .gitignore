@@ -3,6 +3,7 @@
 .vscode/
 build/
 dist/
+junit/
 venv/
 *.egg-info/
 

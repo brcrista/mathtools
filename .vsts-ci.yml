@@ -13,10 +13,10 @@ phases:
       versionSpec: '$(python.version)'
       architecture: 'x64'
       addToPath: 'true'
-  - script: python -m pip install --upgrade pip && pip install -r requirements-dev.txt
-    displayName: 'Install Dependencies'
-  - script: pytest tests --doctest-modules --junitxml=junit/test-results.xml
-    displayName: 'pytest'
+  - script: make dependencies
+    displayName: 'Install dependencies'
+  - script: make tests
+    displayName: 'Test'
   - task: PublishTestResults@2
     inputs:
       testResultsFiles: '**/test-results.xml'
