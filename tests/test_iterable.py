@@ -1,4 +1,4 @@
-from mathtools.iterator import take, unzip
+from mathtools.iterable import take, unzip
 
 def test_take():
     assert take(0, range(0, 10)) == []
