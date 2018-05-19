@@ -8,6 +8,4 @@ def test_take() -> None:
 def test_unzip() -> None:
     xs = [1, 2, 3]
     ys = [4, 5, 6]
-    _xs, _ys = unzip(zip(xs, ys))
-    assert list(_xs) == xs
-    assert list(_ys) == ys
+    assert unzip(zip(xs, ys)) == [xs, ys]
