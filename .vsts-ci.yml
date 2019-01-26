@@ -5,8 +5,9 @@ phases:
     matrix:
       Python36:
         python.version: '3.6'
-      Python37-dev:
-        python.version: '>= 3.7.0a'
+      Python37:
+        python.version: '3.7'
+
   steps:
   - task: UsePythonVersion@0
     inputs:
