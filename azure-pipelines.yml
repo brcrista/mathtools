@@ -1,0 +1,29 @@
+jobs:
+- job:
+  displayName: Build and Test
+  pool:
+    vmImage: ubuntu-16.04
+  strategy:
+    matrix:
+      Python36:
+        python.version: '3.6'
+      Python37:
+        python.version: '3.7'
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(python.version)'
+    displayName: Use Python $(python.version)
+
+  - script: make dependencies
+    displayName: Install dependencies
+
+  - script: make tests
+    displayName: Test
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: '**/test-results.xml'
+      testRunTitle: Python $(python.version)
+    displayName: Publish test results

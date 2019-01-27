@@ -1,5 +1,5 @@
 .PHONY: all
-all: pip typecheck tests sdist wheel
+all: dependencies typecheck tests sdist wheel
 
 .PHONY: clean
 clean:
