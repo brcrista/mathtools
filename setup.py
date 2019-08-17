@@ -9,7 +9,7 @@ setup(
     url='https://github.com/brcrista/mathtools',
     author='Brian Cristante',
     license='MIT',
-        classifiers=[
+    classifiers=[
         'Development Status :: 3 - Alpha',
 
         'Intended Audience :: Developers',
