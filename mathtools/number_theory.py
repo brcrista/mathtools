@@ -60,7 +60,7 @@ def prime_factorization(n: int) -> List[int]:
 def eratosthenes(n: int) -> List[int]:
     """All primes less than a natural number `n`, computed with the Sieve of Eratosthenes."""
     assert_natural(n)
-    maybe_prime = [False] + [False] + [True for k in range(2, n)]
+    maybe_prime = [False, False] + [True for k in range(2, n)]
     for i in range(2, n):
         if maybe_prime[i]:
             for j in range(2 * i, n, i):
