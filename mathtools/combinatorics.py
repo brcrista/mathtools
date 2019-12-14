@@ -45,7 +45,6 @@ def binomial_coefficient(n: int, k: int) -> int:
 
     >>> binomial_coefficient(4, 3)
     4
-
     >>> binomial_coefficient(10, 6)
     210
     """

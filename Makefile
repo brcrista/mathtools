@@ -5,6 +5,7 @@ all: dependencies typecheck tests sdist wheel
 clean:
 	rm -rf .mypy_cache build dist *.egg-info
 	rm -rf **/__pycache__
+	rm -rf junit/
 
 .PHONY: dependencies
 dependencies:
