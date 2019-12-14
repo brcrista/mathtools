@@ -49,16 +49,13 @@ def prime_factorization(n: int) -> List[int]:
 
     >>> prime_factorization(1)
     []
-
     >>> prime_factorization(2)
     [2]
-
     >>> prime_factorization(12)
     [2, 2, 3]
     """
     assert_natural(n)
     return _prime_factorization(n)
-
 
 def eratosthenes(n: int) -> List[int]:
     """All primes less than a natural number `n`, computed with the Sieve of Eratosthenes."""
