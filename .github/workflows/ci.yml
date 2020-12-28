@@ -19,6 +19,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
+    - run: python -m pip install --upgrade pip
     - run: make dependencies
     - run: make typecheck
     - run: make tests
