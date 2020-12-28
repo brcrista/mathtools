@@ -13,8 +13,8 @@ dependencies:
 
 .PHONY: typecheck
 typecheck:
-	mypy mathtools --strict
-	mypy tests --ignore-missing-imports --strict
+	mypy mathtools
+	mypy tests --ignore-missing-imports
 
 .PHONY: tests
 tests:

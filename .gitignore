@@ -1,10 +1,10 @@
 .mypy_cache/
 .pytest_cache/
+.venv/
 .vscode/
 build/
 dist/
 junit/
-venv/
 *.egg-info/
 
 *.pyc
